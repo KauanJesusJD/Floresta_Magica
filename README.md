@@ -148,6 +148,71 @@ Um Collider com a opção “IsTrigger” ativada não vai agir como um objeto s
             transform.Rotate(0f, mouseXInput * rotationSpeed, 0f);
     	}
     }
+# Implementações no Jogo
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Colocamos algumas coisas extras no nosso jogo, assim,  o finalizando completamente
+## Menu e os Creditos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resolvemos colocar um Menu e uma cena de credito, contendo um Canvas com: Botões,Texto e imagem. Um Botão serve para trocar de cena (Iniciando o jogo) e um botão para sair.
+![image](https://github.com/KauanJesusJD/Floresta_Magica/assets/127852225/955e1204-4999-4a9f-8c81-92452713220d)<br>
+![image](https://github.com/KauanJesusJD/Floresta_Magica/assets/127852225/3a5c8b19-c857-4921-8377-27a54d7265cb)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O codígo abaixo mostra como fazemos para trocar de cena, utilizando um public void para carregar o cenário e o outro para sair. Depois conectando esse codígo na função "OnClick" do Button, e conectando a function "Carregarcenario()" no botão de iniciar e a function "Sair()" no botão sair.
+
+      using System.Collections;
+      using System.Collections.Generic;
+      using UnityEngine;
+      //adicionar o using para o gerenciador de Cena
+      using UnityEngine.SceneManagement;
+      
+      public class TrocarCena : MonoBehaviour
+      {
+          //remover os métodos default
+      	public void Carregarcenario(){
+      		//método inicia uma nova cena
+      		SceneManager.LoadScene (1); //"1" e o número da cena dentro do Build settings do Unity
+      	}
+      	public void Sair()
+      	{
+      		Application.Quit();
+      	}
+      }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para entrar nos credítos, a partir do momento que o jogador termina o percurso, após 10 segundos, o Jogo abre a cena de créditos com o seguinte codígo:
+
+      void Update() 
+      {    Debug.Log(cronometro);
+          if(texto.enabled == true) {
+                  cronometro += 1 * Time.deltaTime;
+              if ( cronometro >= 10 ) { 
+                  SceneManager.LoadScene (3);
+              }
+            
+          }
+      
+      
+      }
+## HUD dinamico
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colocamos uma espécie de HUD no nosso jogo, que seria esta contagem. Esta contagem está relacionada com o pilar que serve para abrir a porta da primeira parte do percurso (Quando a Esfera encosta no Pilar inicia uma contagem, como ja dito anteriormente).
+![Captura de tela 2023-11-14 115440](https://github.com/KauanJesusJD/Floresta_Magica/assets/127852225/f9686d63-61ad-41e5-9a9b-4456c8bc494e)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nós colocamos o codígo para essa contagem dentro do mesmo codígo para abrir a porta, então colocaremos so as coisas que foram adicionados la dentro (Colocamos em qual linha está o codígo). Para fazer esse HUD, precisamos fazer um "texto dinamico", onde criamos um GameObject vazio e depois associamos um Script a ele, depois de alterar o script o GameObject ira ter a opção para você associar um texto (Dentro do Canvas) a ele. Agora para a contagem nós utilizamos o contador para fazer a porta abrir.
+
+      using UnityEngine.UI; //Linha 4
+
+      private float cronometro = 0f; //Linha 10
+
+      void Update() //Linha 20
+    { 
+        if(iniciarContador == true){
+            contador += 1 * Time.deltaTime;
+            if(contador > 5){
+                parede.transform.Translate(Vector3.back * 2f * Time.deltaTime);
+            }
+        }
+
+    CronometroText.text ="Contagem:" + contador.ToString("F2");
+    } //Linha 30
+
+
+
+
+
 # Link dos Assets utilizados
 https://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208<br>
 https://assetstore.unity.com/packages/2d/textures-materials/nature/terrain-textures-pack-free-139542<br>
