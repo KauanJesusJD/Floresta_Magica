@@ -189,7 +189,7 @@ Um Collider com a opção “IsTrigger” ativada não vai agir como um objeto s
       
       }
 ## HUD dinamico
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colocamos uma espécie de HUD no nosso jogo, que seria esta contagem. Esta contagem está relacionada com o pilar que serve para abrir a porta da primeira parte do percurso (Quando a Esfera encosta no Pilar inicia uma contagem, como ja dito anteriormente).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colocamos uma espécie de HUD no nosso jogo, que seria esta contagem. Esta contagem está relacionada com o pilar que serve para abrir a porta da primeira parte do percurso (Quando a Esfera encosta no Pilar inicia uma contagem, como ja dito anteriormente).<br>
 ![Captura de tela 2023-11-14 115440](https://github.com/KauanJesusJD/Floresta_Magica/assets/127852225/f9686d63-61ad-41e5-9a9b-4456c8bc494e)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nós colocamos o codígo para essa contagem dentro do mesmo codígo para abrir a porta, então colocaremos so as coisas que foram adicionados la dentro (Colocamos em qual linha está o codígo). Para fazer esse HUD, precisamos fazer um "texto dinamico", onde criamos um GameObject vazio e depois associamos um Script a ele, depois de alterar o script o GameObject ira ter a opção para você associar um texto (Dentro do Canvas) a ele. Agora para a contagem nós utilizamos o contador para fazer a porta abrir.
 
